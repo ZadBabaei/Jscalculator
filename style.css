@@ -1,10 +1,19 @@
-body{
+body, h1{
     margin: 0;
     padding: 0;
 }
+
 .nav{
+    padding-left: 15%;
+    margin-top: 0;
     background-color: rgb(66, 105, 189);
-    height:50px
+    height:70px;
+    color: rgb(255, 255, 255);
+    padding-top: 30px;
+}
+h1 span{
+    font-size: 4rem;
+    color: rgb(241, 111, 5);
 }
 .container{
     margin-top:20px;
@@ -81,6 +90,9 @@ transform: scale(1.02);
     height: 100px;
     background-color:#29A8FF;
     color: rgb(41, 40, 40)  ;
+}
+.equalBtn:hover{
+    background-color:#b3cce4
 }
 .zeroBtn{
 width: 140px;
