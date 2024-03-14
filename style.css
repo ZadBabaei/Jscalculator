@@ -1,0 +1,91 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.nav{
+    background-color: rgb(66, 105, 189);
+    height:50px
+}
+.container{
+    margin-top:20px;
+    display: grid;
+     justify-content: center;
+}
+.base{
+    background-color: black;
+    width: 375px;
+    height: 700px;
+    border-radius: 20px;
+}
+.display{
+    height: 30%;
+    margin:20px;
+    padding: 10px;
+    border-radius: 15px 15px 0px 0px;
+    display: flex;
+    flex-direction: column;
+}
+.result{
+    color:azure
+}
+.currentValue{
+    color: rgb(113, 116, 116);
+}
+.BtnSection{
+    display: flex;
+      margin: 20px 10px;
+      margin-bottom: 20px;
+}
+.leftBtnSection{
+  
+    height: 55%;
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+     gap:.25rem;
+}
+.btn{
+   font-family: 'Poppins', sans-serif;
+    border-radius: 10px;
+    margin:10px;
+    width:59px;
+    height: 59px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:#303136;
+    color: #29A8FF;
+}
+.btn:hover{
+    background-color:#29A8FF;
+    color: rgb(41, 40, 40)  ;
+} 
+.btn:focus{
+transform: scale(1.02);
+  transition: transform 0.2s ease-in-out; 
+}
+.btn-topAc,.btn-topBack{
+    background-color: #616161;
+    color: #A5A5A5;
+}
+.rightBtnSectio{ 
+    height: 55%;
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    gap:.25rem;
+}
+
+.equalBtn , .plusBtn{
+    height: 100px;
+    background-color:#29A8FF;
+    color: rgb(41, 40, 40)  ;
+}
+.zeroBtn{
+width: 140px;
+}
+.minusBtn, .multiBtn , .divisionBtn, .plusBtn{
+    background-color:#005DB2;
+    color: rgb(41, 40, 40)  ;
+}
