@@ -14,7 +14,10 @@ document.querySelectorAll('.btn').forEach(button => {
         } else if (['add', 'subtract', 'multiply', 'divide'].includes(button.id)) {
             setOperation(button.textContent);
             console.log("btn context: ", button.textContent);
-        } else {
+        } else if (button.id === 'delete'){
+            deleteNumber(button.textContent);
+        } 
+        else {
             appendNumber(button.textContent);
         }
     });
@@ -22,6 +25,10 @@ document.querySelectorAll('.btn').forEach(button => {
 
 function appendNumber(number) {
     currentInput += number;
+    updateDisplay();
+}
+function deleteNumber(number) {
+    currentInput = currentInput .slice(-1);
     updateDisplay();
 }
 
