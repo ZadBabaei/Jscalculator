@@ -2,13 +2,20 @@ let currentInput = "";
 let previousInput = "";
 let operation = null;
 
-const display = document.getElementById('result');
+const resultDisplay = document.getElementById('result');
 
+// Add event listeners to all buttons
 document.querySelectorAll('.btn').forEach(button => {
-    button.addEventListener('click', () => {
-        switch (button.id) {
+    button.addEventListener('click', function() {
+        const buttonId = this.id;
+        const buttonText = this.textContent.trim(); // Trim any whitespace
+
+        switch (buttonId) {
             case 'clear':
-                clear();
+                clearAll();
+                break;
+            case 'delete':
+                deleteLast();
                 break;
             case 'equals':
                 calculate();
@@ -17,72 +24,78 @@ document.querySelectorAll('.btn').forEach(button => {
             case 'subtract':
             case 'multiply':
             case 'divide':
-                setOperation(button.textContent.trim()); // Ensure operation is correctly set
+                selectOperation(buttonText);
                 break;
             default:
-                appendNumber(button.textContent);
+                appendNumber(buttonText);
                 break;
         }
     });
 });
 
 function appendNumber(number) {
-    currentInput += number; // Append number
-    updateDisplay();
+    currentInput += number;
+    updateDisplay(currentInput);
 }
 
-function setOperation(op) {
-    if (currentInput === "") return; // Don't set operation if there's no current input
-    
-    // If there's an existing operation, calculate it before setting the new operation
-    if (operation && previousInput !== "") {
-        calculate();
+function selectOperation(op) {
+    if (currentInput === "" && previousInput === "") return;
+    if (currentInput !== "") {
+        if (previousInput !== "") {
+            calculate();
+        }
+        operation = op;
+        previousInput = currentInput;
+        currentInput = "";
+    } else {
+        operation = op; // Allows changing the operation without entering a new number
     }
-
-    operation = op; // Set new operation
-    previousInput = currentInput; // Move current input to previous input for calculation
-    currentInput = ""; // Clear current input for the next number
 }
 
 function calculate() {
-    let result;
+    let calculationResult;
     const prev = parseFloat(previousInput);
     const current = parseFloat(currentInput);
+    if (isNaN(prev) || isNaN(current)) return;
 
-    // Perform calculation based on the operation
-    if (!isNaN(prev) && !isNaN(current)) { // Check if both inputs are numbers
-        switch (operation) {
-            case '+':
-                result = prev + current;
-                break;
-            case '-':
-                result = prev - current;
-                break;
-            case '*':
-                result = prev * current;
-                break;
-            case '/':
-                result = prev / current;
-                break;
-            default:
-                return; // Exit if operation is not recognized
-        }
-
-        // Update for next operation or calculation
-        currentInput = result.toString(); // Convert result back to string for display
-        operation = null; // Clear operation
-        previousInput = ""; // Clear previous input
-        updateDisplay(); // Update the display with result
+    switch (operation) {
+        case '+':
+            calculationResult = prev + current;
+            break;
+        case '-':
+            calculationResult = prev - current;
+            break;
+        case '*':
+            calculationResult = prev * current;
+            break;
+        case '/':
+            calculationResult = prev / current;
+            break;
+        default:
+            return;
     }
+
+    currentInput = calculationResult.toString();
+    operation = null;
+    previousInput = "";
+    updateDisplay(currentInput);
 }
 
-function clear() {
+function clearAll() {
     currentInput = "";
     previousInput = "";
     operation = null;
-    updateDisplay();
+    updateDisplay("0");
 }
 
-function updateDisplay() {
-    display.textContent = currentInput || "0"; // Display current input; if empty, display '0'
+function deleteLast() {
+    currentInput = currentInput.slice(0, -1);
+    updateDisplay(currentInput || "0");
 }
+
+function updateDisplay(value) {
+    resultDisplay.textContent = value;
+}
+
+// Initially show 0
+updateDisplay("0");
