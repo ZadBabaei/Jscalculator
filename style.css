@@ -103,3 +103,41 @@ width: 140px;
     background-color:#005DB2;
     color: rgb(41, 40, 40)  ;
 }
+
+
+/* Base styles remain the same */
+
+/* Media query for screens smaller than 600px */
+@media (max-width: 600px) {
+    .nav {
+        padding-left: 5%; /* Adjust padding */
+    }
+    .container {
+        margin-top: 10px;
+    }
+    .base {
+        width: 90%; /* Adjust width to be more fluid */
+        height: auto; /* Make height auto to adjust based on content */
+    }
+    .BtnSection, .leftBtnSection, .rightBtnSectio {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btn, .zeroBtn, .equalBtn, .plusBtn {
+        width: 70px; /* Increase button size for easier interaction */
+        height: 70px;
+    }
+    .zeroBtn {
+        width: auto; /* Adjust the width of the zero button */
+        flex: 2 1 auto; /* Allow it to grow and fill available space */
+    }
+    .display, .currentValue, .result {
+        margin: 10px;
+        padding: 5px;
+    }
+    h1 span, .btn {
+        font-size: 2rem; /* Adjust font size */
+    }
+}
+
+/* Additional media queries can be added for different breakpoints */
