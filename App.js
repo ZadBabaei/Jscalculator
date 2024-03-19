@@ -4,11 +4,11 @@ let operation = null;
 
 const resultDisplay = document.getElementById('result');
 
-// Add event listeners to all buttons
+
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', function() {
         const buttonId = this.id;
-        const buttonText = this.textContent.trim(); // Trim any whitespace
+        const buttonText = this.textContent.trim(); 
 
         switch (buttonId) {
             case 'clear':
@@ -48,7 +48,7 @@ function selectOperation(op) {
         previousInput = currentInput;
         currentInput = "";
     } else {
-        operation = op; // Allows changing the operation without entering a new number
+        operation = op; 
     }
 }
 
